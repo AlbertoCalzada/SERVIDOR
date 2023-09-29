@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="formulariobody">
+    <div class="formulario">
+        <h1>Grabar Contactos</h1>
+
+        <form action="contactos.php" method="post">
+
+            <label for="id_nombre">Introduce tu nombre: </label>
+            <input type="text" id="id_nombre" placeholder="Pon aqui tu nombre" name="nombre" required>
+            <label for="id_apellido">Introduce tu apellido: </label>
+            <input type="text" id="id_apellido" placeholder="Pon aqui tu apellido" name="apellido" required>
+            <label for="id_tlf">Introduce tu tlf: </label>
+            <input type="tel" id="id_tlf" placeholder="Pon aqui tu tlf" name="telefono" required>
+            <input type="submit" value="Grabar Contacto">
+        </form>
+    </div>
+
+</body>
+
+</html>

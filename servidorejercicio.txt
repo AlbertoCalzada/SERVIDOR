@@ -1,0 +1,10 @@
+hacer una suma con los dos numeros random .
+boton verificar
+
+inicio.php
+
+verificar.php
+
+opcion 1 usar input(disabled)
+
+opcion 2 input(hidden)
