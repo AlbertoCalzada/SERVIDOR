@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .formulariobody {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -66,7 +70,7 @@ input[type="submit"]:hover {
 
 .contenedor {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 15px auto;
     padding: 20px;
     background-color: rgba(36, 192, 158, 0.863); 
     border: 3px solid #333333;
@@ -101,18 +105,6 @@ th {
 
 
 
-
-@media (max-width: 600px) {
-    .tabla {
-        width: 100%; 
-        table-layout: fixed; 
-        min-width: 375px;
-    }
-
-    th, td {
-        word-wrap: break-word; 
-    }
-}
 
 
 
