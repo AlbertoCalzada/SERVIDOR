@@ -40,7 +40,7 @@
                     $myfile = fopen("coches.csv", "r") or die("Unable to open file!");
 
                     while (!feof($myfile)) {
-                        $frase = fgets($myfile) . "<br>";
+                        $frase = fgets($myfile) . "<br>"; 
                         $arrayFrase = explode(",", $frase);
 
                         if (count($arrayFrase) == 2) {
