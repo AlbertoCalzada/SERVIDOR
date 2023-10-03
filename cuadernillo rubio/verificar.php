@@ -19,7 +19,8 @@
 
     switch ($operandsymbol) {
         case "+":
-            if ($resultado == ($numeroRandom1 + $numeroRandom2)) {
+            $resultadoCorrecto = $numeroRandom1 + $numeroRandom2;
+            if ($resultado == $resultadoCorrecto) {
                 echo "El resultado es correcto ";
             } else {
                 echo " El resultado no es correcto ";
@@ -28,7 +29,8 @@
             break;
 
         case "-":
-            if ($resultado == ($numeroRandom1 - $numeroRandom2)) {
+            $resultadoCorrecto = $numeroRandom1 - $numeroRandom2;
+            if ($resultado == $resultadoCorrecto) {
                 echo "El resultado es correcto ";
             } else {
                 echo " El resultado no es correcto ";
@@ -37,7 +39,8 @@
             break;
 
         case "*":
-            if ($resultado == ($numeroRandom1 * $numeroRandom2)) {
+            $resultadoCorrecto = $numeroRandom1 * $numeroRandom2;
+            if ($resultado == $resultadoCorrecto) {
                 echo "El resultado es correcto ";
             } else {
                 echo " El resultado no es correcto ";
@@ -46,11 +49,16 @@
             break;
     }
     ?>
-    <form action="inicio.php" method="post">
-        <input type="submit" value="Volver" onclick="location.href='inicio.php'">
-        <input type="number" name="resultadofinal" hidden>
-    </form>
-
+    <?php
+    if ($resultado == $resultadoCorrecto) {
+        echo '<form action="inicio.php" method="post">';
+        echo '<input type="submit" value="Volver">';
+        echo '<input type="number" name="resultadofinal" hidden>';
+        echo '</form>';
+    } else {
+        echo '<button onclick="history.go(-1)">Volver</button>';
+    }
+    ?>
 </body>
 
 </html>

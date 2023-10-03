@@ -21,10 +21,14 @@
             text-align: center;
             margin-top: 20px;
         }
+        input[type="submit"]{
+            margin-top: 5px;
+        }
     </style>
 </head>
 
 <body>
+
 
     <form action="verificar.php" method="post">
 
@@ -40,7 +44,7 @@
             <label for=""><?php echo $numeroRandom2; ?></label>
             <?php echo " = " ?>
             <div>
-                <input type="number" name="resultado">
+                <input type="number" name="resultado" placeholder="introduce el resultado">
             </div>
         </div>
         <br>
