@@ -24,6 +24,7 @@
 
     //var_dump($objeto_json);
     ?>
+
     <img src="<?php echo $img; ?>" alt="">
 </body>
 
