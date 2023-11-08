@@ -23,7 +23,7 @@ try {
     lastname VARCHAR(30) NOT NULL
   )";
   $conn->exec($sql);
-  echo "Table 'alumno' created successfully";
+  echo "Table 'alumno' created successfully <br>";
 } catch(PDOException $e) {
   echo "Error: " . $e->getMessage();
 }

@@ -54,6 +54,13 @@ if (isset($_POST["idnombre"]) && isset($_POST["idapellido"])) {
             <input type="submit" value="Buscar">
         </form>
     </div>
+    <?php
+    if (isset($_POST["buscarAlumno"])) {
+        $firstname=$_POST["buscarAlumno"];
+        // Mostrar la lista de alumnos
+        BuscarAlumno($conn,$firstname);
+    }
+    ?>
 </body>
 
 </html>
