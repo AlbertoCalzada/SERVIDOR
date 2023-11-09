@@ -1,0 +1,6 @@
+aemet:
+http://ip/servidor/JSON/peticionTiempo.php
+cookies:
+http://ip/servidor/Cookies/Ejercicio1/pruebaCookies.php
+bbdd: 
+http://ip/servidor/BBDD/Ejercicio1/

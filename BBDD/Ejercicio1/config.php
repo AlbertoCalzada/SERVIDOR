@@ -1,7 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+
+$config = parse_ini_file('cfg.ini', true);
+
+// Acceder a los valores
+$servername = $config['database']['servername'];
+$username = $config['database']['username'];
+$password = $config['database']['password'];
 
 try {
   $conn = new PDO("mysql:host=$servername", $username, $password);
@@ -11,7 +15,7 @@ try {
   $nombreBBDD = "alumnos";
   $sql = "CREATE DATABASE IF NOT EXISTS $nombreBBDD";
   $conn->exec($sql);
-  echo "Database created successfully<br>";
+  
 
   // Seleccionar la base de datos recién creada
   $conn->exec("USE $nombreBBDD");
@@ -23,7 +27,7 @@ try {
     lastname VARCHAR(30) NOT NULL
   )";
   $conn->exec($sql);
-  echo "Table 'alumno' created successfully <br>";
+  
 } catch(PDOException $e) {
   echo "Error: " . $e->getMessage();
 }

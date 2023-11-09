@@ -1,0 +1,3 @@
+<Files "cfg.ini">
+    Deny from all
+</Files>
