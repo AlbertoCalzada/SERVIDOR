@@ -42,8 +42,7 @@
 <body>
     <form action="./peticionTiempo.php" method="POST">
         <label for="municipio">Elige el municipio</label>
-        <select name="municipio" id="municipio">
-            <option value="Vacio"></option>
+        <select name="municipio" id="municipio">           
             <option value="Leganes">Leganes</option>
             <option value="Burgos">Burgos</option>
             <option value="Hornos">Hornos</option>

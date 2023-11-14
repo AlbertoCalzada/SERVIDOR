@@ -179,5 +179,22 @@
                 $_COOKIE["name"];
         </pre>
     </div>
+    <div class="enlaces">
+    <a href="mipagina.php?q=gato&edad=12">Enlace</a>
+    
+    $valor=$_GET['q'];
+    $valor2=$_GET['edad'];
+    echo "$valor+ $valor2";
+    </div>
+
+    <div class="hash">
+        //de password a hash(one way), tiene que tener +60 caracteres
+    $password='1234';
+    $hash=password_hash($password,PASSWORD_DEFAULT);
+    echo "HASH: $hash";
+    $HASH='el hash que nos ha salido'
+    $verificacion=password_verify("1234",$HASH); 
+    echo "VERIFICACION: $verificacion" ;
+    </div>
 </body>
 </html>
