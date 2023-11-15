@@ -1,6 +1,6 @@
 aemet:
-http://ip/servidor/JSON/peticionTiempo.php
+http://192.168.4.231/servidor/JSON/peticionTiempo.php
 cookies:
-http://ip/servidor/Cookies/Ejercicio1/pruebaCookies.php
+http://192.168.4.231/servidor/Cookies/Ejercicio1/pruebaCookies.php
 bbdd: 
-http://ip/servidor/BBDD/Ejercicio1/
+http://192.168.4.231/servidor/BBDD/Ejercicio1/
