@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Sign In</title>
+</head>
+<body>
+  <h1>Iniciar sesión</h1>
+  <form id="loginForm">
+    <label for="usr">Usuario:</label>
+    <input type="text" id="usr" name="usr" required>
+    <br>
+    <label for="pwd">Contraseña:</label>
+    <input type="password" id="pwd" name="pwd" required>
+    <br>
+    <button type="button" onclick="submitForm()">Iniciar sesión</button>
+  </form>
+
+  <div id="mensaje"></div>
+
+  <script>
+    function submitForm() {
+      var usuario = document.getElementById("usr").value;
+      var contraseña = document.getElementById("pwd").value;
+
+      // Crear objeto XMLHttpRequest
+      var xhr = new XMLHttpRequest();
+
+      // Configurar la solicitud
+      xhr.open("POST", "tu_servidor.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      // Manejar la respuesta del servidor
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          handleResponse(xhr.responseText);
+        }
+      };
+
+      // Enviar datos al servidor
+      xhr.send("usr=" + usuario + "&pwd=" + contraseña);
+    }
+
+    function handleResponse(response) {
+      var mensajeDiv = document.getElementById("mensaje");
+
+      if (response === "ok") {
+        // Redirigir a la página de bienvenida
+        window.location.href = "bienvenida.php?usr=" + document.getElementById("usr").value;
+      } else {
+        // Mostrar mensaje de error
+        mensajeDiv.innerHTML = "El usuario o la contraseña son incorrectas";
+        mensajeDiv.style.color = "red";
+
+        // Borrar contenido del campo de contraseña
+        document.getElementById("pwd").value = "";
+      }
+    }
+  </script>
+</body>
+</html>
