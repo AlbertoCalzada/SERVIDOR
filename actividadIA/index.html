@@ -1,62 +1,40 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página de Sign In</title>
+  <title>Authentication Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="auth.js"></script>
 </head>
 <body>
-  <h1>Iniciar sesión</h1>
-  <form id="loginForm">
-    <label for="usr">Usuario:</label>
-    <input type="text" id="usr" name="usr" required>
-    <br>
-    <label for="pwd">Contraseña:</label>
-    <input type="password" id="pwd" name="pwd" required>
-    <br>
-    <button type="button" onclick="submitForm()">Iniciar sesión</button>
+  <h2>Sign In</h2>
+  <div id="signin-error" style="color: red;"></div>
+  <form id="signin-form">
+    <label for="signin-username">Username:</label>
+    <input type="text" id="signin-username" name="signin-username" required><br>
+
+    <label for="signin-password">Password:</label>
+    <input type="password" id="signin-password" name="signin-password" required><br>
+
+    <button type="button" onclick="signIn()">Sign In</button>
   </form>
 
-  <div id="mensaje"></div>
+  <hr>
 
-  <script>
-    function submitForm() {
-      var usuario = document.getElementById("usr").value;
-      var contraseña = document.getElementById("pwd").value;
+  <h2>Sign Up</h2>
+  <div id="signup-error" style="color: red;"></div>
+  <form id="signup-form">
+    <label for="signup-username">Username:</label>
+    <input type="text" id="signup-username" name="signup-username" required><br>
 
-      // Crear objeto XMLHttpRequest
-      var xhr = new XMLHttpRequest();
+    <label for="signup-password">Password:</label>
+    <input type="password" id="signup-password" name="signup-password" required><br>
 
-      // Configurar la solicitud
-      xhr.open("POST", "tu_servidor.php", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password" required><br>
 
-      // Manejar la respuesta del servidor
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          handleResponse(xhr.responseText);
-        }
-      };
-
-      // Enviar datos al servidor
-      xhr.send("usr=" + usuario + "&pwd=" + contraseña);
-    }
-
-    function handleResponse(response) {
-      var mensajeDiv = document.getElementById("mensaje");
-
-      if (response === "ok") {
-        // Redirigir a la página de bienvenida
-        window.location.href = "bienvenida.php?usr=" + document.getElementById("usr").value;
-      } else {
-        // Mostrar mensaje de error
-        mensajeDiv.innerHTML = "El usuario o la contraseña son incorrectas";
-        mensajeDiv.style.color = "red";
-
-        // Borrar contenido del campo de contraseña
-        document.getElementById("pwd").value = "";
-      }
-    }
-  </script>
+    <button type="button" onclick="signUp()">Sign Up</button>
+  </form>
 </body>
 </html>
