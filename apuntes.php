@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apuntes php</title>
     <style>
-        h3{
+        h3 {
             color: red;
         }
 
-        p{
+        p {
             width: 50%;
         }
 
-        pre{
+        pre {
             border: solid 1px black;
             padding: 3%;
             width: fit-content;
@@ -22,13 +23,15 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Apuntes PHP: Servidor</h1>
     <div class="taller">
         <h3>Formulario Taller</h3>
-        <p> - <b>Action</b>:  Envía datos a la página pasada por este atributo</p>
+        <p> - <b>Action</b>: Envía datos a la página pasada por este atributo</p>
         <form action="./apuntes.php" method="post">
-            <p> - <b>POST</b>: Envía los datos sin mostrarlos en la cabecera del navegador<p>
+            <p> - <b>POST</b>: Envía los datos sin mostrarlos en la cabecera del navegador
+            <p>
         </form>
         <form action="./apuntes.php" method="get">
             <p> - <b>GET</b>: Envía los datos y los muestra en la cabecera del navegador</p>
@@ -39,21 +42,21 @@
                 <p> - <b>Name</b>: Atributo de input, necesario para asociarlo a los datos enviados por GET/POST</p>
                 <p> - <b>Id</b>: Atributo necesario para las clases en css o por ejemplo, para asociarlo al label y al js</p>
                 <p> - <b>Placeholder</b>: Atributo obligatorio para dar información de formato de lo que quieres
-                        que te pasen en el input</p>
+                    que te pasen en el input</p>
                 <p> - <b>Required</b>: Atributo opcional según si quieres que el dato sea obligatorio antes de enviar
-                        dicho formulario o no</p>
+                    dicho formulario o no</p>
             </label>
             <input type="text" name="nombreParaMetodo" id="nombreParaFront" placeholder="Obligatorio" required>
             <label for="number">
                 <p> - <b>Input:number</b>: Obligatorio poner este input en vez de text, si el dato que se va
-                        introducir es solo númerico, por ejemplo la edad</p>
+                    introducir es solo númerico, por ejemplo la edad</p>
             </label>
             <input type="number" name="number" id="number">
             <label for="submit">
                 <p> - <b>Input</b>:submit: Input de tipo botón, obligatorio para enviar los datos, no es recomendable,
                     pero se puede sustituir por un button type="submit"</p>
                 <p> - <b>Value</b>: atribut de input:submit es el texto dentro del botón,
-                        si no se pone se pondra el valor "enviar" en el idioma de tu navegador</p>
+                    si no se pone se pondra el valor "enviar" en el idioma de tu navegador</p>
             </label>
             <input type="submit" value="Enviar">
             <input type="submit">
@@ -64,7 +67,7 @@
     <div class="rubio">
         <h3>Cuadernillo rubio</h3>
         <p>Para este ejercicio tenemos que tener en cuenta como recibir datos,
-                guardarlos en variables, mostrarlos y en algunos casos retrocederlos</p>
+            guardarlos en variables, mostrarlos y en algunos casos retrocederlos</p>
         <p>Para recibir datos de una página con un formulario se hace de la siguiente forma: </p>
         <ul>
             <li>Para recoger datos del método Post: $_POST["name"]</li>
@@ -73,14 +76,16 @@
         </ul>
         <p>Para guardarlo en una variable por ejemplo con le método POST, creamos la variable con un dolar
             y le asignamos el valor del $_POST["name"]</p>
-        <p>        Ejemplo: $varName = $_POST["name"];</p>
+        <p> Ejemplo: $varName = $_POST["name"];</p>
         <p>Para mostrar datos en php, usamos (echo), para concatenar utilizamos el punto o podemos introducer
-                nombres de variables dentro de las comillas dobles que forman un string</p>
+            nombres de variables dentro de las comillas dobles que forman un string</p>
         <h4><b>Enviar datos hacia detras</b></h4>
         <p>Para enviar datos hacia detras podemos usar el type hidden de input y lo enviamos a través del value</p>
         <form action="./apuntes.php" method="post">
             <input type="hidden" name="devolver" value="DatoADevolver">
-            <p>< input type="hidden" name="devolver" value="DatoADevolver"></p>
+            <p>
+                < input type="hidden" name="devolver" value="DatoADevolver">
+            </p>
         </form>
     </div>
 
@@ -123,7 +128,7 @@
     <div class="session">
         <h3>Session: Chat</h3>
         <p>Para sesión utilizamos $_SESSION["name"];</p>
-        <p>Para poder hacer uso de esto tendremos que iniciar la sesión, luego la tendremos que asignar y ya la 
+        <p>Para poder hacer uso de esto tendremos que iniciar la sesión, luego la tendremos que asignar y ya la
             podremos utilizar</p>
         <p>Las sesiones son como las variables globales.</p>
 
@@ -164,12 +169,12 @@
     </div>
     <div class="cookies">
         <h3>COOKIES: ropa</h3>
-        <p>Para crear la cookie utilizamos setcookie()</p>
+        <p>Para crear la cookie utilizamos set_cookie()</p>
         <p>Usaremos tres párametros en dicha función</p>
         <ul>
             <li>Name: Nombre de la cookie, lo usaremos para acceder a su valor más tarde</li>
             <li>Value: Valor que devuelve la cookie</li>
-            <li>Expiration: Es la caducidad de la cookie, por ello usamos time(), que devuelve el tiempo actual 
+            <li>Expiration: Es la caducidad de la cookie, por ello usamos time(), que devuelve el tiempo actual
                 y le sumamos segundos, en el ejemplo, hacemos que la cookie sirva una hora, luego desaparece</li>
         </ul>
         <pre>
@@ -179,22 +184,207 @@
                 $_COOKIE["name"];
         </pre>
     </div>
-    <div class="enlaces">
-    <a href="mipagina.php?q=gato&edad=12">Enlace</a>
-    
-    $valor=$_GET['q'];
-    $valor2=$_GET['edad'];
-    echo "$valor+ $valor2";
-    </div>
+    <div class="mysql">
+        <h3>MYSQL: Alumnos</h3>
+        <fieldset>
+            <legend>Conectarse y creacion bbdd / tablas</legend>
+           <pre>
+            <code>
+                //Teniendo los datos en cfg.ini por ejemplo:
+                [database]
+                servername = "localhost"
+                username = "root"
+                password = ""
+                $config = parse_ini_file('cfg.ini', true);
+                
+                // Acceder a los valores
+                $servername = $config['database']['servername'];
+                $username = $config['database']['username'];
+                $password = $config['database']['password'];
+                try {
+                    $conn = new PDO("mysql:host=$servername", $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                   
+                    // Crear la base de datos
+                    $nombreBBDD = "alumnos";
+                    $sql = "CREATE DATABASE IF NOT EXISTS $nombreBBDD";
+                    $conn->exec($sql);
+                   
+                   
+                    // Seleccionar la base de datos recién creada
+                    $conn->exec("USE $nombreBBDD");
+                   
+                    // Crear la tabla 'alumno'
+                    $sql = "CREATE TABLE IF NOT EXISTS alumno (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        firstname VARCHAR(30) NOT NULL,
+                        lastname VARCHAR(30) NOT NULL
+                    )";
+                    $conn->exec($sql);
+                } catch(PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+            </code>
+           </pre>
+        </fieldset>
+        <fieldset>
+            <legend>Insertar nuevo dato a la bbdd</legend>
+            <pre>
+                <code>
+                    function Insertar($conn, $firstname, $lastname)
+                    {
+                        try {
 
-    <div class="hash">
-        //de password a hash(one way), tiene que tener +60 caracteres
-    $password='1234';
-    $hash=password_hash($password,PASSWORD_DEFAULT);
-    echo "HASH: $hash";
-    $HASH='el hash que nos ha salido'
-    $verificacion=password_verify("1234",$HASH); 
-    echo "VERIFICACION: $verificacion" ;
+                            $sql = "INSERT INTO alumno (firstname, lastname) VALUES ('$firstname', '$lastname')";
+                            $conn->exec($sql);
+                            echo "Nuevo registro creado exitosamente";
+                        } catch (PDOException $e) {
+                            echo "Error: " . $e->getMessage();
+                        }
+                    }
+                </code>
+            </pre>
+        </fieldset>
+        <fieldset>
+            <legend>Ver algo de la bbdd</legend>
+            <pre>
+                <code>
+                    try {
+                        $sql = "SELECT * FROM TABLA";
+                        // use exec() because no results are returned
+                        $allProducts = $conn->query($sql);
+                    } catch(PDOException $e) {
+                        echo $sql . "&lt;br&gt;" . $e->getMessage();
+                    }
+                </code>
+            </pre>
+            // ESTO:
+                $sql = "SELECT * FROM alumno";
+                $stmt = $conn->query($sql);
+                $alumnos = $stmt->fetchAll(PDO::FETCH_ASSOC); //ESTA PARTE
+        </fieldset>
+        <fieldset>
+            <legend>Exportar a csv</legend>
+            <pre>
+                <code>
+                    function ExportarToCsv($conn)
+                    {
+                        try {
+                            // Select para los datos.
+                            $sql = "SELECT * FROM alumno";
+                            $stmt = $conn->query($sql);
+                            $alumnos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        if (empty($alumnos)) {
+                            return "No se encontraron datos para exportar.";
+                        }
+
+                        $filename = "mysqlDatos.csv";
+                        $file = fopen($filename, "w") or die("No se ha podido crear el archivo csv!");
+
+                        // Escribe la cabecera con los nombres de las columnas
+                        $header = array_keys($alumnos[0]);
+                        fputcsv($file, $header);
+
+                        // Escribe los datos limpiando los valores para no tener espacios innecesarios
+                        foreach ($alumnos as $alumno) {
+                            foreach ($alumno as &$value) {
+                                $value = trim($value);
+                            }
+                         fputcsv($file, $alumno);
+                        }
+
+                            fclose($file);
+                            return "Éxito en la operación";
+                        } catch (Exception $e) {
+                            return "error: " . $e->getMessage();
+                        }
+                    }
+                </code>
+            </pre>
+        </fieldset>
+    </div>
+    <div class="mongo">
+        <h3>Mongodb: Agenda</h3>
+        <p>Para mongodb necesitamos el puerto 27017, además de iniciar el comando "composer require mongodb/mongodb"
+            dentro de cada proyecto que vayamos a comenzar</p>
+        <fieldset>
+            <legend>Conectar</legend>
+            <fieldset>
+                <legend>Config.ini</legend>
+                <pre>
+                    <code>
+                        namebd = "agenda"
+                        ip = "localhost"
+                        port = "27017"
+                    </code>
+                </pre>
+            </fieldset>
+            <fieldset>
+                <legend>Conexión php</legend>
+                <pre>
+                    <code>
+                        require_once __DIR__.'/../vendor/autoload.php';
+
+                        $config = parse_ini_file("config.ini", true);
+                        $namebd = $config["namebd"];
+                        $ip = $config["ip"];
+                        $port = $config["port"];
+
+                        $client = new MongoDB\Client("mongodb://$ip:$port");
+                        $database = $client->$namebd;
+                    </code>
+                </pre>
+            </fieldset>
+            <fieldset>
+                <legend>Meter un contacto</legend>
+                <pre>
+                    <code>
+                        function insertContact($db, $contact)
+                        {
+                            $agenda = $db->contacto;
+                            $agenda->insertOne($contact);
+                        }
+                    </code>
+                </pre>
+            </fieldset>
+            <fieldset>
+                <legend>Obtener todos los contactos</legend>
+                <pre>
+                    <code>
+                        function getAllContacts($db)
+                        {
+                            $agenda = $db->contacto->find();
+                        
+                            foreach($agenda as $contact)
+                                $contacts[] = $contact;
+                            return $contacts;
+                        }
+                    </code>
+                </pre>
+            </fieldset>
+            <fieldset>
+                <legend>Buscar todos los contactos con un tipo de dato</legend>
+                <pre>
+                    <code>
+                        function getContactAtType($db, $type, $data)
+                        {
+                            $result = $db->contacto->find([$type => $data]);
+                            foreach($result as $r)
+                            {
+                                if ($r)
+                                    $contacts[] = new Contact($r->name, $r->surname, $r->tel);
+                            }
+                            return $contacts;
+                        }
+                    </code>
+                </pre>
+            </fieldset>
+        </fieldset>
+        <fieldset>
+
+        </fieldset>
     </div>
 </body>
+
 </html>
