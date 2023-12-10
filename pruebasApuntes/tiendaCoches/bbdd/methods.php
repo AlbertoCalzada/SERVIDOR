@@ -91,16 +91,31 @@ function insertUsuario($db, $name, $password)
 {
     $conexion = $db->usuarios;
     $pass = password_hash($password, PASSWORD_DEFAULT);
-    $usuario = new Usuario($name, $pass);
+    $usuario = new Usuario($name, $pass,0);
     $conexion->insertOne($usuario);
 }
 
-function getAllUsuarios($db)
+/*function getAllUsuarios($db)
 {
     $conexion = $db->usuarios->find();
 
     foreach ($conexion as $usuario)
         $usuarios[] = $usuario;
+    return $usuarios;
+}*/
+
+function getAllUsuarios($db)
+{
+    $conexion = $db->usuarios->find();
+    $usuarios = [];
+
+    foreach ($conexion as $usuarioData) {
+        // Crear un objeto Usuario y asignar los datos
+        $usuario = new Usuario($usuarioData['name'], $usuarioData['pass'],$usuarioData['rol']);
+        
+        $usuarios[] = $usuario;
+    }
+
     return $usuarios;
 }
 
@@ -118,6 +133,8 @@ function buscarUsuario($db, $nombre)
     return false;
 }
 }
+
+
 
 function checkUsuario($db, $nombre,$pass)
 {

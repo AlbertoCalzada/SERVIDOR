@@ -2,6 +2,7 @@
 session_start(); //inicio de sesion
 require '../bbdd/methods.php';
 
+$usuarios=getAllUsuarios($db);
 
 
 
@@ -32,8 +33,23 @@ require '../bbdd/methods.php';
         $pass = $_POST['pass'];
 
         if (checkUsuario($db, $user, $pass)) {
-            //si el usuario existe
-            $_SESSION['user'] = $user;
+           /* // Si el usuario existe
+            $userObject = new Usuario($user, $pass);
+
+            echo var_dump($userObject);
+            // Almacena el objeto Usuario en la sesión
+            $_SESSION['user'] = serialize($userObject);*/
+
+            foreach ($usuarios as $usuario)
+            {
+               if($usuario->name==$user)
+               {
+                
+                $userObject = new Usuario($user, $pass,$usuario->rol);
+                $_SESSION['user'] = serialize($userObject);
+               }
+            }
+            
             header('Location: ./postInicioSesion.php');
         } else {
             //si el usuario no existe

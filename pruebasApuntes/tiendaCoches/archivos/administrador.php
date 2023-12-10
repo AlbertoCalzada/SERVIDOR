@@ -1,6 +1,18 @@
 <?php
 session_start();
 require '../bbdd/methods.php';
+require '../bbdd/connectionPhpMyAdmin.php';  //phpmyadmin
+require '../bbdd/metodosPhpMyAdmin.php';  //phpmyadmin
+
+
+if (isset($_SESSION['user'])) {
+
+    if (unserialize($_SESSION['user'])->getRol() == 0) {
+        header('Location: ./postInicioSesion.php');
+    }
+} else {
+    header('Location: ./postInicioSesion.php');
+}
 
 if (isset($_POST["coche"])) {
     $nombre = $_POST["coche"];
@@ -37,6 +49,24 @@ if (isset($_POST["cocheBorrado"])) {
 
 if (isset($_POST["csv"])) {
     getCsvCars($db);
+}
+
+if (isset($_POST["mysql"])) {
+    $coches = getAllCars($db);
+    $usuarios=getAllUsuarios($db);
+    foreach ($coches as $coche) {
+        $nombre=$coche->name;
+        $precio=$coche->price;
+        $colour=$coche->color;
+        InsertarCocheSQL($conn,$nombre,$precio,$colour);
+    }
+
+    foreach ($usuarios as $usuario) {
+        $nombre=$usuario->name;
+        $pass=$usuario->pass;
+        $rol=$usuario->rol;
+        InsertarUsuariosSQL($conn,$nombre,$pass,$rol);
+    }
 }
 ?>
 
@@ -91,7 +121,12 @@ if (isset($_POST["csv"])) {
     <hr>
     <h2>Sacar CSV</h2>
     <form action="./administrador.php" method="post">
-    <input type="submit" name="csv" value="Obtener CSV">
+        <input type="submit" name="csv" value="Obtener CSV">
+    </form>
+    <hr>
+    <h2>Actualizar MYSQL</h2>
+    <form action="./administrador.php" method="post">
+        <input type="submit" name="mysql" value="Actualizar MYSQL">
     </form>
 </body>
 

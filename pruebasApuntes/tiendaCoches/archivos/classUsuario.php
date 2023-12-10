@@ -3,20 +3,24 @@ class Usuario
 {
     public $name;
     public $pass;
-    public $rol;
+    public $rol; //si es 1 sera administrador
     public $money;
 
-    public function __construct($name, $pass)
+    public function __construct($name, $pass,$rol)
     {
         $this->name = $name;
         $this->pass = $pass;
-        $this->rol=0;
-        $this->money=1000000;
-       
+        $this->rol = $rol;
+        $this->money = 1000000;
     }
 
-    function setRol($rol)
+    public function setRol($rol)
     {
-        $this->rol=$rol;
+        $this->rol = $rol;
+    }
+
+    public function getRol()
+    {
+        return $this->rol;
     }
 }

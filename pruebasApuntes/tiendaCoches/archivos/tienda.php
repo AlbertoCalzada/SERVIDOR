@@ -44,43 +44,42 @@ require '../bbdd/methods.php';
         </form>
         <hr>
         <?php
-        if (isset($_POST["coche"])&& isset($_POST["detalles"])) {
+        if (isset($_POST["coche"]) && isset($_POST["detalles"])) {
             $nombre = $_POST["coche"];
             $coches = getAllCars($db);
 
             foreach ($coches as $coche) {
                 if ($coche->name == $nombre) {
-                  
+
                     echo '<h3>Nombre del coche: </h3> ' . $coche->name;
                     echo '<h3>Precio del coche: </h3>' . $coche->price;
                     echo '<h3>Color del coche: </h3>' . $coche->color;
-              
                 }
             }
         }
-
-        if (isset($_POST["coche"])&& isset($_POST["carrito"])) {
+        $counter = 0;
+        // Comprobación y actualización del carrito al agregar un coche
+        if (isset($_POST["coche"]) && isset($_POST["carrito"])) {
             $nombre = $_POST["coche"];
-            
-            setcookie($cookieName, $nombre, time() + 3600);
 
-            for ($i = 0; $i < 5; $i++) { 
-                $cookieName = "carrito$i";
-            
-                if (!isset($_COOKIE[$cookieName])) {
-                 
-                    echo "Cookie $cookieName establecida correctamente.";
-            
-                    // Redirigir a micarrito.php incluyendo el índice en la URL
+            // Encontrar la primera posición libre en las cookies del carrito
+            while (isset($_COOKIE["carrito$counter"])) {
+                $counter += 1;
+            }
 
-                    header("Location: ./micarrito.php?indice=$i");
-                    
-                } else {
-                    echo "La cookie $cookieName ya está definida.";
-                }
+            // Establecer una nueva cookie del carrito
+            setcookie("carrito$counter", $nombre);
+        }
+
+        // Reiniciar el contador
+        $counter = 0;
+
+        // Conteo de elementos en el carrito
+        if (isset($_COOKIE["carrito0"])) {
+            while (isset($_COOKIE["carrito$counter"])) {
+                $counter += 1;
             }
         }
-        
         ?>
         <a href="./micarrito.php">Ver carrito</a>
     </div>
