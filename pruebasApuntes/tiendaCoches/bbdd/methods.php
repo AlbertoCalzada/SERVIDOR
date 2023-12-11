@@ -29,6 +29,9 @@ function deleteCar($db, $name)
     $conexion = $db->coches;
 
     $conexion->deleteOne(['name' => $name]);
+    
+    
+    
 }
 
 function updateCar($db, $name, $price, $color)
