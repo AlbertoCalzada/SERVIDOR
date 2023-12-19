@@ -1,0 +1,50 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<h2>Iniciar Sesión</h2>
+<form id="loginForm">
+    <label for="usr">Usuario:</label>
+    <input type="text" id="usr" name="usr" required>
+    <br>
+    <label for="pwd">Contraseña:</label>
+    <input type="password" id="pwd" name="pwd" required>
+    <br>
+    <button type="button" onclick="signIn()">Iniciar Sesión</button>
+</form>
+
+<div id="mensaje" style="color: red;"></div>
+
+<script>
+function signIn() {
+    var usuario = $("#usr").val();
+    var contraseña = $("#pwd").val();
+
+    $.ajax({
+        type: "POST",
+        url: "procesar_login.php", // Reemplaza con la ruta correcta a tu script PHP
+        data: { usr: usuario, pwd: contraseña },
+        dataType: "json",  // Especifica que esperamos una respuesta JSON
+        success: function(response) {
+            if (response.result === "ok") {
+                // Redirigir a la página de bienvenida
+                window.location.href = "bienvenido.php?usr=" + response.usuario;
+            } else {
+                // Mostrar mensaje de error y borrar el contenido del password
+                $("#mensaje").html('El usuario o la contraseña son incorrectas');
+                $("#pwd").val("");
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>

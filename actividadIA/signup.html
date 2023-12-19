@@ -1,0 +1,55 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<h2>Crear Usuario</h2>
+<form id="signupForm">
+    <label for="newUsr">Nuevo Usuario:</label>
+    <input type="text" id="newUsr" name="newUsr" required>
+    <br>
+    <label for="newPwd">Nueva Contraseña:</label>
+    <input type="password" id="newPwd" name="newPwd" required>
+    <br>
+    <label for="confirmPwd">Confirmar Contraseña:</label>
+    <input type="password" id="confirmPwd" name="confirmPwd" required>
+    <br>
+    <button type="button" onclick="signUp()">Crear Usuario</button>
+</form>
+
+<div id="signupMensaje"></div>
+
+<script>
+function signUp() {
+    var nuevoUsuario = $("#newUsr").val();
+    var nuevaContraseña = $("#newPwd").val();
+    var confirmarContraseña = $("#confirmPwd").val();
+
+    if (nuevaContraseña !== confirmarContraseña) {
+        $("#signupMensaje").html('<p style="color: red;">Las contraseñas no coinciden</p>');
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "procesar_registro.php", // Reemplaza con la ruta correcta a tu script PHP
+        data: { newUsr: nuevoUsuario, newPwd: nuevaContraseña },
+        success: function(response) {
+            if (response === "ok") {
+                window.location.href = "bienvenido.php?usr=" + nuevoUsuario;
+            } else {
+                $("#signupMensaje").html('<p style="color: red;">Error al crear el usuario</p>');
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>
