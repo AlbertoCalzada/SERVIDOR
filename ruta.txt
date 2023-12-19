@@ -4,3 +4,10 @@ cookies:
 http://192.168.4.231/servidor/Cookies/Ejercicio1/pruebaCookies.php
 bbdd: 
 http://192.168.4.231/servidor/BBDD/Ejercicio1/
+
+$database->user->InsertOne(
+    [
+        "name"=>"carlos",
+        "pass"=>"1234"
+    ]
+);

@@ -1,0 +1,48 @@
+<?php
+
+// Conectar a MongoDB
+$cliente = new MongoDB\Client("mongodb://localhost:27017");
+
+// Seleccionar la base de datos
+$baseDeDatos = $cliente->nombre_de_tu_base_de_datos;
+
+// Seleccionar la colección
+$coleccion = $baseDeDatos->nombre_de_tu_coleccion;
+
+// Leer el archivo JSON
+$jsonFilePath = 'ruta/a/tu/archivo.json';
+$jsonData = json_decode(file_get_contents($jsonFilePath), true);
+
+// Insertar datos en la colección
+$coleccion->insertMany($jsonData);
+
+?>
+
+<?php
+
+require 'vendor/autoload.php'; // Cargar las dependencias de Composer
+
+use MongoDB\Client;
+
+// Conexión a MongoDB
+$client = new Client("mongodb://localhost:27017");
+
+// Selecciona la base de datos y la colección
+$database = $client->selectDatabase('tu_base_de_datos');
+$collection = $database->selectCollection('tu_coleccion');
+
+// Recoger el JSON desde alguna fuente (por ejemplo, un archivo)
+$jsonData = file_get_contents('ruta/al/archivo.json');
+
+// Decodificar el JSON
+$data = json_decode($jsonData, true);
+
+// Insertar los datos en la colección de MongoDB
+$result = $collection->insertMany($data);
+
+// Verificar el resultado
+if ($result->getInsertedCount() > 0) {
+    echo "Datos insertados correctamente en MongoDB.";
+} else {
+    echo "Error al insertar datos en MongoDB.";
+}
