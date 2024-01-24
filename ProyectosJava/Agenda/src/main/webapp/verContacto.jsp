@@ -13,22 +13,28 @@
 
     <% 
         
-        String ruta = "C:\\xampp\\htdocs\\servidor\\ProyectosJava\\Agenda\\Agenda.contactos.csv";
-        
-        
-        ArrayList<Contact> list = Metodos.Leer(ruta);
+       ArrayList<Contact> list= (ArrayList<Contact>) request.getAttribute("listaContacto");
+    
+  	
     %>
     
-    <% if (list != null) { %>
+    <% if (list.size()!=0) { %>
         <table border="1">
             <tr>
                 <th>Nombre</th>
                 <th>Teléfono</th>
+                 <th>Edad</th>
             </tr>
             <% for (int i = 0; i < list.size(); i++) { %>
                 <tr>
                     <td><%= list.get(i).getName() %></td>
                     <td><%= list.get(i).getTlf() %></td>
+                    <td><%= list.get(i).getEdad() %></td>
+                    <td><form action="MiServlet">
+                    <input type="hidden" name="tlf" value=<%=list.get(i).getTlf() %>>
+                   <input type="hidden" name="accion" value="borrar">
+                   <input type="submit" value="Borrar">
+                    </form></td>
                 </tr>
             <% } %>
         </table>

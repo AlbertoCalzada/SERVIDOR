@@ -4,15 +4,23 @@ public class Contact
 {
 	String name;
 	String tlf;
-	
-	public Contact(String name, String tlf) 
-	{
-		this.name=name;
-		this.tlf=tlf;
+	int edad;
+	public Contact(String name, String tlf, int edad) {
+		super();
+		this.name = name;
+		this.tlf = tlf;
+		this.edad = edad;
 	}
+
+
+	
 	
 	public String getName() {
 		return name;
+	}
+	
+	public int getEdad() {
+		return edad;
 	}
 	
 	public String getTlf() {
