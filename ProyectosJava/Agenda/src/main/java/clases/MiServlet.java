@@ -59,8 +59,6 @@ public class MiServlet extends HttpServlet {
 			}else if(accion.equals("buscar"))
 			{
 				
-				
-				
 				String name = request.getParameter("name");
 				list=Metodos.Buscar(name);
 				request.setAttribute("listaContacto", list);

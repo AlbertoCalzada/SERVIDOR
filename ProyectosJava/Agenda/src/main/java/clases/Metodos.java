@@ -87,7 +87,7 @@ public class Metodos
 	{
 		
 		ArrayList<Contact> list = new ArrayList<Contact>();
-		ArrayList<Contact> list2 = new ArrayList<Contact>();
+		//ArrayList<Contact> list2 = new ArrayList<Contact>();
 		list=Leer();
 		try {
 			String ruta= "C:\\xampp\\htdocs\\servidor\\ProyectosJava\\Agenda\\Agenda.contactos.csv";
@@ -95,7 +95,7 @@ public class Metodos
 			fw.write("");
 			fw.close();
 			fw = new FileWriter(ruta, true); 
-		
+
 			
 			for (int i = 0; i < list.size(); i++) 
 			{

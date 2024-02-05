@@ -22,7 +22,7 @@
         <table border="1">
             <tr>
                 <th>Nombre</th>
-                <th>Teléfono</th>
+                <th>Telefono</th>
                  <th>Edad</th>
             </tr>
             <% for (int i = 0; i < list.size(); i++) { %>
