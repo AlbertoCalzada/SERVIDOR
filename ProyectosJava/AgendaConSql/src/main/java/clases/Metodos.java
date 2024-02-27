@@ -59,7 +59,7 @@ public class Metodos
 	}
 
 	public static ArrayList<Contact> LeerSql() {
-		
+
 		ResultSet result = null;
 		ArrayList<Contact> list = new ArrayList<Contact>();
 		try {
@@ -71,24 +71,24 @@ public class Metodos
 			String sql = "SELECT * FROM `contactos`";
 			result = stmt.executeQuery(sql);
 			result.next();
-			
-			while(result.getRow()!=0) 
-			{
+
+			while (result.getRow() != 0) {
 				System.out.println(result.getObject(1));
-				
-				Contact contact = new Contact(result.getObject(2).toString(), result.getObject(3).toString(), Integer.parseInt(result.getObject(4).toString()));
+
+				Contact contact = new Contact(result.getObject(2).toString(), result.getObject(3).toString(),
+						Integer.parseInt(result.getObject(4).toString()));
 				list.add(contact);
 				result.next();
-				
+
 			}
-			
+
 			stmt.close();
-			return list;  
+			return list;
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
@@ -140,11 +140,10 @@ public class Metodos
 		// ArrayList<Contact> list2 = new ArrayList<Contact>();
 		list = LeerSql();
 		try {
-			
 
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getTlf().equals(tlf)) {
-					
+
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection c;
 					c = DriverManager.getConnection("jdbc:mysql://localhost:3306/agendaJava", "root", "");
@@ -154,10 +153,9 @@ public class Metodos
 					stmt.close();
 				}
 			}
-			
 
 		} catch (Exception e) {
-			
+
 			e.getStackTrace();
 		}
 		return list;

@@ -38,7 +38,6 @@
 			<input type="text" id="name" name="name">
 			<input type="submit" value="Buscar">
 			<input type="hidden" name="accion" value="buscar">
-
 		</form>
 		<!-- <a href="MiServlet?accion=listar">Ver contactos</a> -->
 		<div class="hidden">
